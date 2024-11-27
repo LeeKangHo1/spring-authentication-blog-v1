@@ -15,6 +15,11 @@ public class UserController {
     private final HttpSession session;
     // request는 여러 개라 관리 불가. 싱글톤 객체만 가능
 
+    @GetMapping("/login-form")
+    public String loginForm() {
+       return "user/login-form"; // user 폴더 안에 있으니까
+    }
+
     @PostMapping("/login") // 비밀번호는 세션이나 url 쿼리스트링에 있으면 안되니까 예외로 Post로 전송
     public String login(UserRequest.LoginDTO loginDTO) {
         User sessionUser = userService.로그인(loginDTO);
@@ -25,7 +30,7 @@ public class UserController {
         // 다 작성했으니 포스트맨으로 테스트
     }
 
-    // 포스트맨으로 로그인 테스트
+    // 포스트맨으로 로그인 테스트 -> 다른 브랜치에 저장하거나 블로그로 옮기거나
 //    @ResponseBody
 //    @GetMapping("/test/auth")
 //    public String testAuth() {
