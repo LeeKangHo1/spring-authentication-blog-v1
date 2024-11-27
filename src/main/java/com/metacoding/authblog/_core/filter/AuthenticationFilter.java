@@ -23,7 +23,5 @@ public class AuthenticationFilter implements Filter {
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }
-
-        System.out.println("작동하니?");
     }
 }

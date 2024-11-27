@@ -30,7 +30,7 @@ public class UserController {
         // 다 작성했으니 포스트맨으로 테스트
     }
 
-    // 포스트맨으로 로그인 테스트 -> 다른 브랜치에 저장하거나 블로그로 옮기거나
+    // 포스트맨으로 로그인 테스트
 //    @ResponseBody
 //    @GetMapping("/test/auth")
 //    public String testAuth() {
