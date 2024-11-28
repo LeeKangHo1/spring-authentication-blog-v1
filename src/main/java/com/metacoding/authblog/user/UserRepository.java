@@ -27,4 +27,9 @@ public class UserRepository {
         }
         // 다 만들면 일단 테스트
     }
+
+    public User save(User user) {
+        em.persist(user);
+        return user; // user 리턴하는 습관을 들이자
+    }
 }

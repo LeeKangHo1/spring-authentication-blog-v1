@@ -5,7 +5,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration // 안에 @Component 존재
+// @Configuration
 public class FilterConfig {
 
     @Bean // 컴포넌트 스캔 시 @Bean이 있으면 메서드를 실행 -> 반환값을 IoC 컨테이너에 등록
