@@ -28,8 +28,8 @@ public class SecurityConfig {
                 // s 는 security -> 인증이 필요한 기능은 url에 /s/를 넣는다.
                 r.requestMatchers("/s/**").authenticated().anyRequest().permitAll())
                 .formLogin(f ->
-                        f.loginPage("/login-form") // 인증 필요 시 로그인 페이지로
-                                .loginProcessingUrl("/login") // 로그인 알고리즘 실행(loadUserByUsername 메서드)
+                        f.loginPage("/login-form") // 인증 필요 시 /login-form 경로로 GET 요청
+                                .loginProcessingUrl("/login") // 로그인 POST 요청, 알고리즘 실행(loadUserByUsername 메서드)
                                 .defaultSuccessUrl("/"));  // 로그인 완료되면 인덱스로
 
         return http.build();
