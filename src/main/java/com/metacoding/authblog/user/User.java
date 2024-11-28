@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "user_tb")
 @Getter
-@Entity // 필요한 어노테이션 생각 잘하시오
+@Entity
 public class User implements UserDetails {
 
     @Id
@@ -47,19 +47,19 @@ public class User implements UserDetails {
         return true;
     }
 
-    // ID 잠금 되었는지(비밀번호 많이 틀려서 같은)
+    // ID 잠금 여부를 확인합니다.
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
-    // 비밀번호 만료 관리(법으로 되어있다.)
+    // 비밀번호가 만료되지 않았는지 확인합니다.
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-    // 계정 비활성화(게임에서 영정 당하는 거)
+    // 계정 비활성화 여부를 확인합니다.
     @Override
     public boolean isEnabled() {
         return true;

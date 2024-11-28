@@ -20,7 +20,6 @@ public class UserController {
     @PostMapping("/join")
     public String join(UserRequest.JoinDTO joinDTO) {
         userService.회원가입(joinDTO);
-        return "redirect:/login-form"; // 시큐리티 내장 login-form
+        return "redirect:/login-form";
     }
-
 }

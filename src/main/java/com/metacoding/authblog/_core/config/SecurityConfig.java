@@ -20,7 +20,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 
-        // TODO: 추후 설명 추가 필요
+        // CSRF 보호 기능 비활성화
         http.csrf(c -> c.disable());
 
         // url pattern filter

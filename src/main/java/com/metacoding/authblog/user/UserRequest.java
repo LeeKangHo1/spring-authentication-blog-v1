@@ -17,6 +17,7 @@ public class UserRequest {
         public User toEntity(PasswordEncoder passwordEncoder) {
             // 비밀번호 해시화
             String encPassword = passwordEncoder.encode(password);
+            System.out.println(encPassword);
             User user = new User(null, username, encPassword, email, null);
             return user;
         }
