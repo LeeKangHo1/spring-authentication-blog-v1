@@ -1,5 +1,7 @@
 package com.metacoding.authblog._core.config;
 
+import com.metacoding.authblog.user.User;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,11 +28,20 @@ public class SecurityConfig {
         // url pattern filter
         http.authorizeHttpRequests( r ->
                 // s 는 security -> 인증이 필요한 기능은 url에 /s/를 넣는다.
-                r.requestMatchers("/s/**").authenticated().anyRequest().permitAll())
+                r.requestMatchers("/s/**")
+                        .authenticated()
+                        .anyRequest()
+                        .permitAll())
                 .formLogin(f ->
                         f.loginPage("/login-form") // 인증 필요 시 /login-form 경로로 GET 요청
                                 .loginProcessingUrl("/login") // 로그인 POST 요청, 알고리즘 실행(loadUserByUsername 메서드)
-                                .defaultSuccessUrl("/"));  // 로그인 완료되면 인덱스로
+//                                .defaultSuccessUrl("/") // successHandler 때문에 실행 안됨
+                                .successHandler((request, response, authentication) -> { // 로그인 성공 시 추가 작업 설정 가능
+                                    User user = (User) authentication.getPrincipal(); // authentication에서 UserDetils 객체를 받을 수 있다.
+                                    HttpSession session = request.getSession();
+                                    session.setAttribute("sessionUser", user);
+                                    response.sendRedirect("/"); // defaultSuccessUrl 안되니까 인덱스로 보내기 위해
+                                }));
 
         return http.build();
     }

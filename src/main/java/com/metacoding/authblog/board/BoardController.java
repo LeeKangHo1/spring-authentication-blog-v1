@@ -16,14 +16,14 @@ public class BoardController {
     private final UserService userService;
 
     @GetMapping("/")
-    public String index(@AuthenticationPrincipal User user) {
-        // @AuthenticationPrincipal 어노테이션이 있으면 시큐리티가 세션에서 user 꺼내서 준다.
-        System.out.println("로그인 한 username: " + user.getUsername());
+    public String index() {
         return "index";
     }
 
-    @GetMapping("/board/save-form")
-    public String saveForm() {
+    @GetMapping("/s/board/save-form")
+    public String saveForm(@AuthenticationPrincipal User user) {
+        // @AuthenticationPrincipal 어노테이션이 있으면 시큐리티가 세션에서 user 꺼내서 준다.
+        System.out.println("로그인 한 username: " + user.getUsername());
         return "board/save-form";
     }
 }
